@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import {
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
   ChevronRight,
-  Code2,
   Database,
   Layout,
   Terminal,
@@ -62,8 +60,8 @@ const Nav = () => {
 
 const Hero = () => {
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  useTransform(scrollY, [0, 500], [0, 200]);
+  useTransform(scrollY, [0, 500], [0, -150]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -105,7 +103,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-gray-400 max-w-2xl font-mono leading-relaxed mb-10"
           >
-            I'm a full-stack developer specializing in building exceptional digital experiences.
+            I&apos;m a full-stack developer specializing in building exceptional digital experiences.
             Currently focused on accessible, human-centered products.
           </motion.p>
 
@@ -186,7 +184,16 @@ const Projects = () => {
   );
 };
 
-const ProjectCard = ({ project, index }: { project: any, index: number }) => {
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  tech: string[];
+  image: string;
+  link: string;
+}
+
+const ProjectCard = ({ project, index }: { project: Project, index: number }) => {
   return (
     <ScrollReveal delay={index * 0.1}>
       <motion.div
