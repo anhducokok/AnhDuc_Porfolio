@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   Github,
   Linkedin,
@@ -59,10 +59,6 @@ const Nav = () => {
 };
 
 const Hero = () => {
-  const { scrollY } = useScroll();
-  useTransform(scrollY, [0, 500], [0, 200]);
-  useTransform(scrollY, [0, 500], [0, -150]);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
